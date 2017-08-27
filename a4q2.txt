@@ -1,0 +1,41 @@
+JiaYin CHEN
+Q2
+
+//////////////////////COPY PASTE THIS PART IF YOU WANT TO TEST ALL TOGETHER////////////////////////////////////////////
+////////////contains button, material, metal,..., buttoncollection....////////////////////////////////////////////////
+////////////////////////clearer code will follow//////////////////////////////////////////////////////////////////////
+{:button|m|a|lignenumber|mproperty|aproperty|{:getcost|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getcost}}:}{:getferrous|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getferrous}}:}{:getchemicals|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getchemicals}}:}{:getnumbers|{{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|getnumbers}}:}{:getselfshank|{{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|getselfshank}}:}{:tostring|{ {{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|tostring}} {{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|tostring}} , lignenumber:{{{lignenumber}}} } :}{:gettype|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|gettype}}:}{:`|fName|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}}}}}}}:}:}{:material|m|{:gettype|{{ {{{m}}}|gettype}}:}{:getcost|{{ {{{m}}}|getcost}}:}{:getferrous|{{#ifeq|{{ {{{m}}}|gettype}}|metal|{{ {{{m}}}|getferrous}}|material not metal:does not have ferrous parameter}}:}{:getchemicals|{{#ifeq|{{ {{{m}}}|gettype}}|plastic|{{ {{{m}}}|getchemicals}}|material not plastic:does not have chemicals}}:}{:tostring|{{ {{{m}}}|tostring}}:}{:`|fName|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined in material object}}}}}}}}}}:}:}{:plastic|chemicals|{:gettype|plastic:}{:getcost|20:}{:getchemicals|{{{chemicals}}}:}{:tostring|type:plastic, cost:{{getcost}}, chemicals:{{getchemicals}}:}{:`|fName|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}:}:}{:metal|ferrous|{:gettype|metal:}{:getcost|30:}{:getferrous|{{{ferrous}}}:}{:tostring|type:metal, cost:{{getcost}}, ferrous:{{getferrous}}:}{:`|fName|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}:}:}{:attachment|a|{:getadj|{{ {{{a}}}|getadj}}:}{:getnumbers|{{#ifeq|{{ {{{a}}}|getadj}}|hole|{{ {{{a}}}|getnumbers}}|not a hole:function not defined}}:}{:getselfshank|{{#ifeq|{{ {{{a}}}|getadj}}|shank|{{ {{{a}}}|getselfshank}}|not a shank:function not defined}}:}{:tostring|{{ {{{a}}}|tostring}}:}{:`|fName|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}}}:}:}{:holed|numbers|{:getadj|hole:}{:getnumbers|{{{numbers}}}:}{:tostring|, number of holes:{{getnumbers}}:}{:`|fName|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}:}:}{:shank|selfshank|{:getadj|shank:}{:getselfshank|{{{selfshank}}}:}{:tostring|, is it self-shank:{{getselfshank}}:}{:`|fName|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}:}:}{:cons|f|s|{:car|{{{f}}}:}{:cdr|{{{s}}}:}{:`|fName|{{#ifeq|{{{fName}}}|car|{{car}}|{{#ifeq|{{{fName}}}|cdr|{{cdr}}|function not applicable on the list}}}}:}:}{:car| {:`|list|{{ {{{list}}}|car}}:}:}{:cdr|{:`|list|{{ {{{list}}}|cdr}}:}:}{:buttoncollection|buttons|title|filter|{:beginningtable|<table>:}{:endtable|</table>:}{:tabletitle|<tr><th><b>{{{title}}}</b></th></tr>:}{:wofilter|list|{{#ifeq|{{ {{cdr}}|{{{list}}}}}|null|<tr><th>{{ {{ {{car}}|{{{list}}}}}|tostring}}</th></tr>|<tr><th>{{ {{ {{car}}|{{{list}}}}}|tostring}}</th></tr>{{wofilter|{{ {{cdr}}|{{{list}}}}}}}}}:}{:wfilter|list|listfilter|{{#ifeq|{{ {{cdr}}|{{{list}}}}}|null|{{#ifeq|{{ {{ {{car}}|{{{list}}}}}|gettype}}|{{{listfilter}}}|<tr><th>{{ {{ {{car}}|{{{list}}}}}|tostring}}</th></tr>| }}|{{#ifeq|{{ {{ {{car}}|{{{list}}}}}|gettype}}|{{{listfilter}}}|<tr><th>{{ {{ {{car}}|{{{list}}}}}|tostring}}</th></tr>| }}{{wfilter|{{ {{cdr}}|{{{list}}}}}|{{{listfilter}}} }}}}:}{{beginningtable}}{{tabletitle}}{{#ifeq|{{{filter}}}||{{wofilter|{{{buttons}}} }}|{{wfilter|{{{buttons}}}|{{{filter}}} }}}}{{endtable}}:}
+
+
+////////////////////////////////////code to test the buttoncollection individially... but make sure that buttons is a list that i constructed////////////////////////////////////////////////
+{:buttoncollection|buttons|title|filter|{:beginningtable|<table>:}{:endtable|</table>:}{:tabletitle|<tr><th><b>{{{title}}}</b></th></tr>:}{:wofilter|list|{{#ifeq|{{ {{cdr}}|{{{list}}}}}|null|<tr><th>{{ {{ {{car}}|{{{list}}}}}|tostring}}</th></tr>|<tr><th>{{ {{ {{car}}|{{{list}}}}}|tostring}}</th></tr>{{wofilter|{{ {{cdr}}|{{{list}}}}}}}}}:}{:wfilter|list|listfilter|{{#ifeq|{{ {{cdr}}|{{{list}}}}}|null|{{#ifeq|{{ {{ {{car}}|{{{list}}}}}|gettype}}|{{{listfilter}}}|<tr><th>{{ {{ {{car}}|{{{list}}}}}|tostring}}</th></tr>| }}|{{#ifeq|{{ {{ {{car}}|{{{list}}}}}|gettype}}|{{{listfilter}}}|<tr><th>{{ {{ {{car}}|{{{list}}}}}|tostring}}</th></tr>| }}{{wfilter|{{ {{cdr}}|{{{list}}}}}|{{{listfilter}}} }}}}:}{{beginningtable}}{{tabletitle}}{{#ifeq|{{{filter}}}||{{wofilter|{{{buttons}}} }}|{{wfilter|{{{buttons}}}|{{{filter}}} }}}}{{endtable}}:}
+
+////////////////////////more readable code/////////////////
+{:buttoncollection|buttons|title|filter|
+	{:beginningtable|<table>:}
+	{:endtable|</table>:}
+	{:tabletitle|<tr><th><b>{{{title}}}</b></th></tr>:}
+	{:wofilter|list|{{#ifeq|{{ {{cdr}}|{{{list}}}}}|null|<tr><th>{{ {{ {{car}}|{{{list}}}}}|tostring}}</th></tr>|<tr><th>{{ {{ {{car}}|{{{list}}}}}|tostring}}</th></tr>{{wofilter|{{ {{cdr}}|{{{list}}}}}}}}}:}
+	{:wfilter|list|listfilter|{{#ifeq|{{ {{cdr}}|{{{list}}}}}|null|{{#ifeq|{{ {{ {{car}}|{{{list}}}}}|gettype}}|{{{listfilter}}}|<tr><th>{{ {{ {{car}}|{{{list}}}}}|tostring}}</th></tr>| }}|{{#ifeq|{{ {{ {{car}}|{{{list}}}}}|gettype}}|{{{listfilter}}}|<tr><th>{{ {{ {{car}}|{{{list}}}}}|tostring}}</th></tr>| }}{{wfilter|{{ {{cdr}}|{{{list}}}}}|{{{listfilter}}} }}}}:}
+	{{beginningtable}}
+	{{tabletitle}}
+	{{#ifeq|{{{filter}}}||{{wofilter|{{{buttons}}} }}|{{#ifeq|{{{filter}}}|metal|{{wfilter|{{{buttons}}}|metal}}|{{#ifeq|{{{filter}}}|plastic|{{wfilter|{{{buttons}}}|plastic}}|filter does not exist, did you type it correctly}}}}}}
+	{{endtable}}
+:}
+////////////////
+{{wfilter|{{{buttons}}}|{{{filter}}} }}
+
+////////////////////////////////////////
+TEST using these 3 buttons
+{{button|metal|holed|9|yes|8}}
+{{button|plastic|shank|9|polyester|yes}}
+{{button|metal|shank|9|no|yes}}
+
+{{cons|{{button|metal|shank|9|no|yes}}|{{cons|{{button|plastic|shank|9|polyester|yes}}|{{cons|{{button|metal|holed|9|yes|8}}|null}}}}}}
+
+{{buttoncollection|{{cons|{{button|metal|shank|9|no|yes}}|{{cons|{{button|plastic|shank|9|polyester|yes}}|{{cons|{{button|metal|holed|9|yes|8}}|null}}}}}}|NEW BUTTON TITLE!!!!|}} <--- tested without filter
+{{buttoncollection|{{cons|{{button|metal|shank|9|no|yes}}|{{cons|{{button|plastic|shank|9|polyester|yes}}|{{cons|{{button|metal|holed|9|yes|8}}|null}}}}}}|NEW BUTTON TITLE!!!!|plastic}}<--- tested with plastic filter and metal filter: works!!!
+
+
+///////////////////////////////////////////////////////////////////
+

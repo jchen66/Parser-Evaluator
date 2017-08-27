@@ -1,0 +1,138 @@
+JiaYin CHEN
+ASSIGNMENT 4
+QUESTION 1
+
+var e=createEnv(null);
+var test="{:button|m|a|lignenumber|mproperty|aproperty|{:getcost|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getcost}}:}{:getferrous|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getferrous}}:}{:getchemicals|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getchemicals}}:}{:getnumbers|{{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|getnumbers}}:}{:getselfshank|{{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|getselfshank}}:}{:tostring|{ {{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|tostring}} {{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|tostring}} , lignenumber:{{{lignenumber}}} } :}{:gettype|{{material|{{ {{{m}}}|{{{mproperty}}} }}}}|gettype:}{:`|fName|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}}}}}}}:}:}{:material|m|{:gettype|{{ {{{m}}}|gettype}}:}{:getcost|{{ {{{m}}}|getcost}}:}{:getferrous|{{#ifeq|{{ {{{m}}}|gettype}}|metal|{{ {{{m}}}|getferrous}}|material not metal:does not have ferrous parameter}}:}{:getchemicals|{{#ifeq|{{ {{{m}}}|gettype}}|plastic|{{ {{{m}}}|getchemicals}}|material not plastic:does not have chemicals}}:}{:tostring|{{ {{{m}}}|tostring}}:}{:`|fName|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined in material object}}}}}}}}}}:}:}{:plastic|chemicals|{:gettype|plastic:}{:getcost|20:}{:getchemicals|{{{chemicals}}}:}{:tostring|type:plastic, cost:{{getcost}}, chemicals:{{getchemicals}}:}{:`|fName|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}:}:}{:metal|ferrous|{:gettype|metal:}{:getcost|30:}{:getferrous|{{{ferrous}}}:}{:tostring|type:metal, cost:{{getcost}}, ferrous:{{getferrous}}:}{:`|fName|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}:}:}{:attachment|a|{:getadj|{{ {{{a}}}|getadj}}:}{:getnumbers|{{#ifeq|{{ {{{a}}}|getadj}}|hole|{{ {{{a}}}|getnumbers}}|not a hole:function not defined}}:}{:getselfshank|{{#ifeq|{{ {{{a}}}|getadj}}|shank|{{ {{{a}}}|getselfshank}}|not a shank:function not defined}}:}{:tostring|{{ {{{a}}}|tostring}}:}{:`|fName|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}}}:}:}{:holed|numbers|{:getadj|hole:}{:getnumbers|{{{numbers}}}:}{:tostring|{ number of holes:{{getnumbers}} }:}{:`|fName|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}:}:}{:holed|numbers|{:getadj|hole:}{:getnumbers|{{{numbers}}}:}{:tostring|number of holes:{{getnumbers}}:}{:`|fName|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}:}:}{{{{button|metal|holed|8|yes|9}}|tostring}}";
+var tree=parseOuter(test);
+var m=evalWML(tree, e);
+
+everything:
+{:button|m|a|lignenumber|mproperty|aproperty|{:getcost|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getcost}}:}{:getferrous|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getferrous}}:}{:getchemicals|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getchemicals}}:}{:getnumbers|{{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|getnumbers}}:}{:getselfshank|{{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|getselfshank}}:}{:tostring|{ {{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|tostring}} {{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|tostring}} , lignenumber:{{{lignenumber}}} } :}{:gettype|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|gettype}}:}{:`|fName|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}}}}}}}:}:}{:material|m|{:gettype|{{ {{{m}}}|gettype}}:}{:getcost|{{ {{{m}}}|getcost}}:}{:getferrous|{{#ifeq|{{ {{{m}}}|gettype}}|metal|{{ {{{m}}}|getferrous}}|material not metal:does not have ferrous parameter}}:}{:getchemicals|{{#ifeq|{{ {{{m}}}|gettype}}|plastic|{{ {{{m}}}|getchemicals}}|material not plastic:does not have chemicals}}:}{:tostring|{{ {{{m}}}|tostring}}:}{:`|fName|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined in material object}}}}}}}}}}:}:}{:plastic|chemicals|{:gettype|plastic:}{:getcost|20:}{:getchemicals|{{{chemicals}}}:}{:tostring|type:plastic, cost:{{getcost}}, chemicals:{{getchemicals}}:}{:`|fName|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}:}:}{:metal|ferrous|{:gettype|metal:}{:getcost|30:}{:getferrous|{{{ferrous}}}:}{:tostring|type:metal, cost:{{getcost}}, ferrous:{{getferrous}}:}{:`|fName|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}:}:}{:attachment|a|{:getadj|{{ {{{a}}}|getadj}}:}{:getnumbers|{{#ifeq|{{ {{{a}}}|getadj}}|hole|{{ {{{a}}}|getnumbers}}|not a hole:function not defined}}:}{:getselfshank|{{#ifeq|{{ {{{a}}}|getadj}}|shank|{{ {{{a}}}|getselfshank}}|not a shank:function not defined}}:}{:tostring|{{ {{{a}}}|tostring}}:}{:`|fName|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}}}:}:}{:holed|numbers|{:getadj|hole:}{:getnumbers|{{{numbers}}}:}{:tostring|, number of holes:{{getnumbers}}:}{:`|fName|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}:}:}{:shank|selfshank|{:getadj|shank:}{:getselfshank|{{{selfshank}}}:}{:tostring|, is it self-shank:{{getselfshank}}:}{:`|fName|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}:}:}{:cons|f|s|{:car|{{{f}}}:}{:cdr|{{{s}}}:}{:`|fName|{{#ifeq|{{{fName}}}|car|{{car}}|{{#ifeq|{{{fName}}}|cdr|{{cdr}}|function not applicable on the list}}}}:}:}{:car| {:`|list|{{ {{{list}}}|car}}:}:}{:cdr|{:`|list|{{ {{{list}}}|cdr}}:}:}
+
+
+
+////////question a//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////BUTTON///////////////////////////////////////////////////////////////////
+everything:
+{:material|m|{:gettype|{{ {{{m}}}|gettype}}:}{:getcost|{{ {{{m}}}|getcost}}:}{:getferrous|{{#ifeq|{{ {{{m}}}|gettype}}|metal|{{ {{{m}}}|getferrous}}|material not metal:does not have ferrous parameter}}:}{:getchemicals|{{#ifeq|{{ {{{m}}}|gettype}}|plastic|{{ {{{m}}}|getchemicals}}|material not plastic:does not have chemicals}}:}{:tostring|{{ {{{m}}}|tostring}}:}{:`|fName|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined in material object}}}}}}}}}}:}:}{:plastic|chemicals|{:gettype|plastic:}{:getcost|20:}{:getchemicals|{{{chemicals}}}:}{:tostring|type:plastic, cost:{{getcost}}, chemicals:{{getchemicals}}:}{:`|fName|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}:}:}{:metal|ferrous|{:gettype|metal:}{:getcost|30:}{:getferrous|{{{ferrous}}}:}{:tostring|type:metal, cost:{{getcost}}, ferrous:{{getferrous}}:}{:`|fName|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}:}:}
+
+material: 
+{:material|m|{:`|fName|{{ {{{m}}}|{{{fName}}} }}:}:}
+
+plastic:
+{:plastic|chemicals|{:gettype|plastic:}{:getcost|20:}{:getchemicals|{{{chemicals}}}:}{:tostring|type:plastic, cost:{{getcost}}, chemicals:{{getchemicals}}:}{:`|fName|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}:}:}
+metal:
+{:metal|ferrous|{:gettype|metal:}{:getcost|30:}{:getferrous|{{{ferrous}}}:}{:tostring|type:metal, cost:{{getcost}}, ferrous:{{getferrous}}:}{:`|fName|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}:}:}
+
+//////////////////////////////////////////MATERIAL////////////////////////////////////////////////////////////////
+{:material|m|
+	{:`|fName|{{ {{{m}}}|{{{fName}}} }}:}
+:}
+
+{:material|m|
+	{:gettype|{{ {{{m}}}|gettype}}:}
+	{:getcost|{{ {{{m}}}|getcost}}:}
+	{:getferrous|{{#ifeq|{{ {{{m}}}|gettype}}|metal|{{ {{{m}}}|getferrous}}|material not metal:does not have ferrous parameter}}:}
+	{:getchemicals|{{#ifeq|{{ {{{m}}}|gettype}}|plastic|{{ {{{m}}}|getchemicals}}|material not plastic:does not have chemicals}}:}
+	{:tostring|{{ {{{m}}}|tostring}}:}
+	{:`|fName|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined in material object}}}}}}}}}}:}
+:}
+
+
+{:plastic|chemicals|
+	{:gettype|plastic:}
+	{:getcost|20:}
+	{:getchemicals|{{{chemicals}}}:}
+	{:tostring|type:plastic, cost:{{getcost}}, chemicals:{{getchemicals}}:}
+	{:`|fName|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}:}
+:}
+{:metal|ferrous|
+	{:gettype|metal:}
+	{:getcost|30:}
+	{:getferrous|{{{ferrous}}}:}
+	{:tostring|type:metal, cost:{{getcost}}, ferrous:{{getferrous}}:}
+	{:`|fName|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}:}
+:}
+
+/////////////////////////////////////////ATTACHMENT///////////////////////////////////////////////////////////////
+
+everything:
+{:attachment|a|{:getadj|{{ {{{a}}}|getadj}}:}{:getnumbers|{{#ifeq|{{ {{{a}}}|getadj}}|hole|{{ {{{a}}}|getnumbers}}|not a hole:function not defined}}:}{:getselfshank|{{#ifeq|{{ {{{a}}}|getadj}}|shank|{{ {{{a}}}|getselfshank}}|not a shank:function not defined}}:}{:tostring|{{ {{{a}}}|tostring}}:}{:`|fName|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}}}:}:}{:holed|numbers|{:getadj|hole:}{:getnumbers|{{{numbers}}}:}{:tostring|, number of holes:{{getnumbers}}:}{:`|fName|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}:}:}{:shank|selfshank|{:getadj|shank:}{:getselfshank|{{{selfshank}}}:}{:tostring|, is it self-shank:{{getselfshank}}:}{:`|fName|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}:}:}
+
+attachment:
+{:attachment|a|{:getadj|{{ {{{a}}}|getadj}}:}{:getnumbers|{{#ifeq|{{ {{{a}}}|getadj}}|hole|{{ {{{a}}}|getnumbers}}|not a hole:function not defined}}:}{:getselfshank|{{#ifeq|{{ {{{a}}}|getadj}}|shank|{{ {{{a}}}|getselfshank}}|not a shank:function not defined}}:}{:tostring|{{ {{{a}}}|tostring}}:}{:`|fName|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}}}:}:}
+holed:
+{:holed|numbers|{:getadj|hole:}{:getnumbers|{{{numbers}}}:}{:tostring|, number of holes:{{getnumbers}}:}{:`|fName|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}:}:}
+shank:
+{:shank|selfshank|{:getadj|shank:}{:getselfshank|{{{selfshank}}}:}{:tostring|, is it self-shank:{{getselfshank}}:}{:`|fName|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}:}:}
+
+//////////////////////////////////////////////////////////////
+{:attachment|a|
+	{:getadj|{{ {{{a}}}|getadj}}:}
+	{:getnumbers|{{#ifeq|{{ {{{a}}}|getadj}}|hole|{{ {{{a}}}|getnumbers}}|not a hole:function not defined}}:}
+	{:getselfshank|{{#ifeq|{{ {{{a}}}|getadj}}|shank|{{ {{{a}}}|getselfshank}}|not a shank:function not defined}}:}
+	{:tostring|{{ {{{a}}}|tostring}}:}
+	{:`|fName|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}}}:}
+	
+:}
+
+{:holed|numbers|
+	{:getadj|hole:}
+	{:getnumbers|{{{numbers}}}:}
+	{:tostring|,attachment type:holed, number of holes:{{getnumbers}}:}
+	{:`|fName|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}:}
+:}
+{:shank|selfshank|
+	{:getadj|shank:}
+	{:getselfshank|{{{selfshank}}}:}
+	{:tostring|,attachment type:shank, is it self-shank:{{getselfshank}}:}
+	{:`|fName|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|getadj|{{getadj}}|function not defined}}}}}}:}
+:}
+
+///////question b//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+{:button|m|a|lignenumber|mproperty|aproperty|{:getcost|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getcost}}:}{:getferrous|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getferrous}}:}{:getchemicals|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getchemicals}}:}{:getnumbers|{{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|getnumbers}}:}{:getselfshank|{{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|getselfshank}}:}{:tostring|{ {{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|tostring}} {{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|tostring}} , lignenumber:{{{lignenumber}}} } :}{:gettype|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|gettype}}:}{:`|fName|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}}}}}}}:}:}
+
+
+{:button|m|a|lignenumber|mproperty|aproperty|
+	{:getcost|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getcost}}:}
+	{:getferrous|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getferrous}}:}
+	{:getchemicals|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|getchemicals}}:}
+	{:getnumbers|{{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|getnumbers}}:}
+	{:getselfshank|{{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|getselfshank}}:}
+	{:tostring|{ {{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|tostring}} {{ {{attachment|{{ {{{a}}}|{{{aproperty}}} }}}}|tostring}} , lignenumber:{{{lignenumber}}} } :}
+	{:gettype|{{ {{material|{{ {{{m}}}|{{{mproperty}}} }}}}|gettype}}:}
+	{:`|fName|{{#ifeq|{{{fName}}}|getcost|{{getcost}}|{{#ifeq|{{{fName}}}|getferrous|{{getferrous}}|{{#ifeq|{{{fName}}}|getchemicals|{{getchemicals}}|{{#ifeq|{{{fName}}}|getnumbers|{{getnumbers}}|{{#ifeq|{{{fName}}}|getselfshank|{{getselfshank}}|{{#ifeq|{{{fName}}}|tostring|{{tostring}}|{{#ifeq|{{{fName}}}|gettype|{{gettype}}|function not defined}}}}}}}}}}}}}}:}
+:}
+//////////////////////////////
+
+
+///////////////////question c//////////////////////////////////////////////////////////////////////////////////////////
+{:cons|f|s|{:car|{{{f}}}:}{:cdr|{{{s}}}:}{:`|fName|{{#ifeq|{{{fName}}}|car|{{car}}|{{#ifeq|{{{fName}}}|cdr|{{cdr}}|function not applicable on the list}}}}:}:}{:car| {:`|list|{{ {{{list}}}|car}}:}:}{:cdr|{:`|list|{{ {{{list}}}|cdr}}:}:}
+
+{:cons|f|s|
+	{:car|{{{f}}}:}
+	{:cdr|{{{s}}}:}
+	{:`|fName|{{#ifeq|{{{fName}}}|car|{{car}}|{{#ifeq|{{{fName}}}|cdr|{{cdr}}|function not applicable on the list}}}}:}
+:}
+
+{:car| 
+	{:`|list|{{ {{{list}}}|car}}:}
+:}
+{:cdr|
+	{:`|list|{{ {{{list}}}|cdr}}:}
+:}
+
+{{ {{cdr}}|{{ {{cdr}}|{{cons|a|{{cons|b|c}}}}}}}}---> returns c
+
+{{{{car}}|{{cons|a|b}}}}
+
+{{cons|a|{{cons|b|{{cons|c|null}}}}}}
+
+//
+{{{{car}}|{{cons|{{ {{car}}|{{cons|a|b}}}}|c}}}} <-- works well!
+{{{{car}}|{{cons|{{{{car}}|{{cons|a|b}}}}|c}}}} <-- gives syntactic error
+
+{{ {{car}}|{{cons|{{ {{car}}|{{cons|a|b}} }}|c}}}}
+{{{{car}}|{{{{car}}|{{cons|{{cons|a|b}}|c}}}}}}
