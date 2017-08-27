@@ -1,6 +1,4 @@
 /*
- * JiaYin Chen
- * 260690708
  * Assignment 2 Question 3
  */
 
